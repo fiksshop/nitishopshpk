@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="08b8384c-fcf4-4942-a6a1-520be7aa7722" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="08b8384c-fcf4-4942-a6a1-520be7aa7722" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -120,7 +118,7 @@
       <updated>1588173275431</updated>
       <workItem from="1588173368679" duration="78128000" />
       <workItem from="1588623937201" duration="1438000" />
-      <workItem from="1588625414441" duration="2248000" />
+      <workItem from="1588625414441" duration="2326000" />
     </task>
     <task id="LOCAL-00001" summary="V2.0">
       <created>1588626154582</created>
@@ -136,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588626711523</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="V2.0">
+      <created>1588629597768</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1588629597768</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,10 +152,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="V2.0" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="722" y="71" key="#Notifications" timestamp="1588626565728">
+    <state x="722" y="71" key="#Deployment" timestamp="1588629580795">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="722" y="71" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1588626565728" />
+    <state x="722" y="71" key="#Deployment/0.0.1536.824@0.0.1536.824" timestamp="1588629580795" />
+    <state x="722" y="71" key="#Notifications" timestamp="1588629632672">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="722" y="71" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1588629632672" />
     <state x="447" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588377158793">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -167,10 +176,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="912" y="286" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1588191784965" />
-    <state x="763" y="7" key="CommitChangelistDialog2" timestamp="1588626693433">
+    <state x="763" y="7" key="CommitChangelistDialog2" timestamp="1588629590087">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="763" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588626693433" />
+    <state x="763" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588629590087" />
     <state width="725" height="209" key="GridCell.Tab.0.bottom" timestamp="1588625877039">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
