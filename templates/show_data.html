@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="bg-light text-center">Informatat e gjeneruara te muajit: <b>{{ month }}</b></h1>
+{% endblock %}
+
+{% block table %}
+    <div class="table-responsive">
+    <table class="table table-bordered table-light table-hover">
+    <thead class="thead-dark">
+    <tr>
+        <th>Data</th>
+        <th>Arka</th>
+        <th>Terheqje</th>
+        <th>Mbetje</th>
+        <th>Shitje</th>
+        <th>Profit</th>
+        <th>Neto</th>
+        <th>Shpenzime</th>
+    </tr>
+    </thead>
+    {% for i in data %}
+
+    <tr>
+    <td>{{ i.date|date:'d-m-Y' }}</td>
+    <td>{{ i.cashbox }}</td>
+    <td>{{ i.withdraw }}</td>
+    <td>{{ i.remain }}</td>
+    <td><b>{{ i.sale }}</b></td>
+    <td>{{ i.profit }}</td>
+     {% if i.neto > 0 %}
+    <td style="color: #16dd1c">+{{ i.neto }}</td>
+      {% else %}
+    <td style="color: #dd152d">{{ i.neto }}</td>
+        {% endif %}
+    <td>{{ i.expense }}</td>
+    </tr>
+    {% endfor %}
+
+    </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block table %}
+<h1 class="bg-light text-center">Statistikat:</h1>
+    <br>
+<div class="row ">
+<div class="col text-center">
+<h3>Ky Muaj:</h3>
+    <table class="table table-bordered table-light table-hover">
+        <tr>
+        <th class="bg-dark text-light">Muaji:</th>
+            <td style="background-color: #cbfaf2;"><b>{{ this_date }}</b></td>
+        </tr>
+        <tr>
+            <th class="bg-dark text-light">Shitje</th>
+            <td>{{ sale }}{% if sale > sale1 %}
+                <i class="fas fa-chevron-up" style="color: #16DD1C"></i>
+                {% else %}
+                <i class="fas fa-chevron-down" style="color: #dd152d"></i>
+            {% endif %}</td>
+        </tr>
+        <tr>
+            <th class="bg-dark text-light">Profit</th>
+            <td>{{ profit }}{% if profit > profit1 %}
+                <i class="fas fa-chevron-up" style="color: #16DD1C"></i>
+                {% else %}
+                <i class="fas fa-chevron-down" style="color: #dd152d"></i>
+            {% endif %}</td>
+        </tr>
+        <tr>
+            <th class="bg-dark text-light">Neto</th>
+            <td>{{ neto }}{% if neto > neto1 %}
+                <i class="fas fa-chevron-up" style="color: #16DD1C"></i>
+                {% else %}
+                <i class="fas fa-chevron-down" style="color: #dd152d"></i>
+            {% endif %}</td>
+        </tr>
+        <tr>
+            <th class="bg-dark text-light">Terheqje</th>
+            <td>{{ withdraw }}{% if withdraw > withdraw1 %}
+                <i class="far fa-smile-wink" style="color: #16DD1C"></i>
+                {% else %}
+                <i class="far fa-frown" style="color: #dd152d"></i>
+            {% endif %}</td>
+        </tr>
+        <tr>
+            <th class="bg-dark text-light">Shpenzim</th>
+            <td>{{ expense }}</td>
+        </tr>
+
+    </table>
+</div>
+<div class="col text-center">
+    <h3>Muaji i Kaluar:</h3>
+    <table class="table table-bordered table-light table-hover">
+        <tr>
+        <th class="bg-dark text-light">Muaji:</th>
+            <td style="background-color: #e7defa;"><b>{{ prev_date }}</b></td>
+        </tr>
+        <tr>
+            <tr>
+            <th class="bg-dark text-light">Shitje</th>
+            <td>{{ sale1 }}</td>
+        </tr>
+        <tr>
+            <th class="bg-dark text-light">Profit</th>
+            <td>{{ profit1 }}</td>
+        </tr>
+        <tr>
+            <th class="bg-dark text-light">Neto</th>
+            <td>{{ neto1 }}</td>
+        </tr>
+        <tr>
+            <th class="bg-dark text-light">Terheqje</th>
+            <td>{{ withdraw1 }}</td>
+        </tr>
+        <tr>
+            <th class="bg-dark text-light">Shpenzim</th>
+            <td>{{ expense1 }}</td>
+        </tr>
+
+    </table>
+</div>
+</div>
+{% endblock %}

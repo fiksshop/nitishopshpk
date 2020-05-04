@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block script %}
+$(document).ready(function(){
+  $("#searching").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#table-content tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+{% endblock %}
+
+{% block content %}
+    {% if request.session.msg %}
+    <!--suppress ALL -->
+        <p style="color: #2bbb34" class="text-center">{{ request.session.msg }}</p>
+    {% endif %}
+    <div class="d-flex justify-content-center">
+    <div class="row">
+<form method="POST" class="text-center">
+    {% csrf_token %}
+   {{ form.supplier_name }}
+    {{ form.contact_name }}
+    {{ form.tel_number }}
+              <button type="submit" class="btn btn-success">Ruaj</button>
+</form>
+        </div>
+        </div>
+    <br>
+    <h3 class="text-center">Kerko...</h3>
+    <input type="search" class="form-control search-input" id="searching" placeholder="Kerko Kontaktin">
+    <hr>
+{% endblock %}
+    {% block table %}
+    <div class="table-responsive">
+    <table class="table table-bordered table-light table-hover customers-list">
+    <thead class="thead-dark">
+    <tr>
+        <th>Emri Biznesit</th>
+        <th>Emri Kontaktit</th>
+        <th>Numri i Telefonit</th>
+        <th>Thirre?</th>
+        <th>Fshije?</th>
+    </tr>
+    </thead>
+    <tbody id="table-content">
+    {% for i in data %}
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ndrysho te dhenat</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'edit_supplier' supp_id=i.id %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="supplier_name" class="form-control" placeholder="Emri Biznesit" required="" id="id_supplier_name" value="{{ i.supplier_name }}">
+    <input type="text" name="contact_name" class="form-control" placeholder="Emri i Kontaktit" required="" id="id_contact_name" value="{{ i.contact_name }}">
+    <input type="text" name="tel_number" value="{{ i.tel_number }}" class="form-control" placeholder="Emri Biznesit" required="" id="id_tel_number">
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Mbyll</button>
+        <button type="submit" class="btn btn-primary">Ruaj</button>
+          </form>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <tr>
+        <td>{{ i.supplier_name }}</td>
+    <td>{{ i.contact_name }}</td>
+    <td><a href="tel:{{ i.tel_number }}">{{ i.tel_number }}</a></td>
+    <td style="padding: 5px" class="justify-conent-center text-center"><a href="tel:{{ i.tel_number }}"><button class="btn btn-success btn-md"><i class="fas fa-phone"></i></button></a></td>
+    <td style="padding: 5px" class="justify-conent-center text-center"><a href="{% url 'del_supplier' o_id=i.id %}"><button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></a> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-edit"></i></button> </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    </div>
+
+
+
+
+
+{% endblock %}

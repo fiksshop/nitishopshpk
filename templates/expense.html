@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="d-flex justify-content-center">
+    <div class="row">
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <br>
+    <button type="submit" class="btn btn-danger">Shto Shpenzimet</button>
+</form>
+        </div>
+        </div>
+
+<br>
+    <hr>
+{% endblock %}
+    {% block table %}
+    <div class="table-responsive">
+    <table class="table table-bordered table-light table-hover">
+    <thead class="thead-dark">
+    <tr>
+        <th>Data</th>
+        <th>Shitje</th>
+        <th>Shpenzime</th>
+    </tr>
+    </thead>
+    {% for i in data %}
+
+    <tr>
+    <td>{{ i.date|date:'d-m-Y' }}</td>
+    <td style="color: #2bbb34"><b>{{ i.sale }}</b></td>
+    <td style="color: #bb1b1f"><b>{{ i.expense }}</b></td>
+    </tr>
+    {% endfor %}
+
+    </table>
+    </div>
+
+{% endblock %}

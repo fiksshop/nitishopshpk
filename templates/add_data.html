@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="d-flex justify-content-center">
+    <div class="row">
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <br>
+    <button type="submit" class="btn btn-success">Kalkulo</button>
+</form>
+        </div>
+        </div>
+    <br>
+    <hr>
+{% endblock %}
+    {% block table %}
+    <div class="table-responsive">
+    <table class="table table-bordered table-light table-hover">
+    <thead class="thead-dark">
+    <tr>
+        <th>Data</th>
+        <th>Arka</th>
+        <th>Mbetje</th>
+        <th>Shitje</th>
+        <th>Profit</th>
+        <th>Neto</th>
+    </tr>
+    </thead>
+    {% for i in data %}
+
+    <tr>
+    <td>{{ i.date|date:'d-m-Y' }}</td>
+    <td>{{ i.cashbox }}</td>
+    <td>{{ i.remain }}</td>
+    <td><b>{{ i.sale }}</b></td>
+    <td>{{ i.profit }}</td>
+     {% if i.neto > 0 %}
+    <td style="color: #16dd1c">+{{ i.neto }}</td>
+      {% else %}
+    <td style="color: #dd152d">{{ i.neto }}</td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+
+    </table>
+    </div>
+
+{% endblock %}

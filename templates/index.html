@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="justify-content-center mx-auto text-center">
+    <div class="text-center row mx-0 justify-content-center">
+
+    <a href="{% url 'add_data' %}"><button type="button" class="btn btn-lg btn-outline-success py-3 px-4 ml-3 mb-4"><i class="fas fa-cart-arrow-down"></i></button></a>
+
+    <a href="{% url 'expense' %}"><button type="button" class="btn btn-lg btn-outline-danger py-3 px-4 ml-3 mb-4"><i class="fas fa-file-invoice-dollar"></i></button></a>
+
+    <a href="{% url 'statistics_page' %}"><button type="button" class="btn btn-lg btn-outline-info py-3 px-4 ml-3 mb-4"><i class="fas fa-chart-area"></i></button></a>
+
+    <a href="{% url 'total' %}"><button type="button" class="btn btn-lg btn-outline-info py-3 px-4 ml-3 mb-4"><i class="fas fa-wallet"></i></button></a>
+    </div>
+    </div>
+
+
+    <div class="row justify-content-center text-center">
+    <div class="justify-content-center text-center">
+    <form method="post" class="form-inline justify-content-center">
+        <div class="form-group">
+        {% csrf_token %}
+        {{ form }}
+        </div>
+    <button type="submit" class="btn btn-primary">Kerko!</button>
+    </form>
+    </div>
+    </div>
+<br>
+    <div class="justify-content-center mx-auto text-center">
+    <div class="text-center row mx-0 justify-content-center">
+
+        <a href="{% url 'settings_page' %}"><button type="button" class="btn btn-md btn-dark py-3 px-4 ml-3 mb-4"><i class="fas fa-cog"></i></button></a>
+
+    </div>
+    </div>
+
+    <hr>
+{% endblock %}
+
+
+{% block table %}
+    <div class="table-responsive">
+    <table class="table table-bordered table-light table-hover">
+    <thead class="thead-dark">
+    <tr>
+        <th>Data</th>
+        <th>Arka</th>
+        <th>Terheqje</th>
+        <th>Mbetje</th>
+        <th>Shitje</th>
+        <th>Profit</th>
+        <th>Neto</th>
+        <th>Shpenzime</th>
+        <th>Del?</th>
+    </tr>
+    </thead>
+    {% for i in data %}
+
+    <tr>
+    <td>{{ i.date|date:'d-m-Y' }}</td>
+    <td>{{ i.cashbox }}</td>
+    <td>{{ i.withdraw }}</td>
+    <td>{{ i.remain }}</td>
+    <td><b>{{ i.sale }}</b></td>
+    <td>{{ i.profit }}</td>
+     {% if i.neto > 0 %}
+    <td style="color: #16dd1c">+{{ i.neto }}</td>
+      {% else %}
+    <td style="color: #dd152d">{{ i.neto }}</td>
+        {% endif %}
+    <td>{{ i.expense }}</td>
+    <td><a href="{% url 'delete' o_id=i.pk %}"><button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button> </a> </td>
+    </tr>
+    {% endfor %}
+
+    </table>
+    </div>
+{% endblock %}

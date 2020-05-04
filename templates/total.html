@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+<!--<td>{ i.date|date:'d-m-Y' }}</td>-->
+
+{% block table %}
+<h1 class="text-center" style="background: #fff;">Total</h1>
+    <br>
+
+    <div class="row">
+<div class="col text-center" style="border-right: 2px solid #c7c7c7">
+<h3>Shitje:</h3>
+    <h3 style="background: #aeffe4;">{{ sale }}&euro;</h3>
+    <hr>
+</div>
+
+<div class="col text-center">
+    <h3>Profit:</h3>
+    <h3 style="background: #acdeff;">{{ profit }}&euro;</h3>
+    <hr>
+</div>
+ </div>
+    <div class="row">
+<div class="col text-center" style="border-right: 2px solid #c7c7c7">
+<h3>NETO:</h3>
+    <h3 style="background: #aeffb1;">{{ neto }}&euro;</h3>
+    <hr>
+</div>
+
+<div class="col text-center">
+    <h3>Shpenzime:</h3>
+    <h3 style="background: #ffc7b9;">{{ expense }}&euro;</h3>
+    <hr>
+</div>
+ </div>
+    <br>
+    <br>
+    <div class="row">
+    <div class="col-md">
+        <div class="card mb-3 bg-arielle-smile widget-chart text-white card-border">
+            <div class="icon-wrapper rounded-circle">
+                <div class="icon-wrapper-bg bg-white opacity-10"></div>
+                <i class="fas fa-euro-sign lnr-cog icon-gradient bg-arielle-smile"></i></div>
+    <div class="widget-numbers">{{ budget }}</div>
+        <div class="widget-subheading">Buxheti</div>
+</div>
+    </div>
+    </div>
+{% endblock %}
