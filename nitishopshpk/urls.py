@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from nitishop.views import index, show_data, expense_page, total_page, add_data, statistics_page, settings_page, deletedata, suppliers, del_supplier, edit_supplier, storage, del_storage, edit_storage
+from nitishop.views import index, show_data, expense_page, total_page, add_data, statistics_page, settings_page, deletedata, suppliers, del_supplier, edit_supplier, storage, del_storage, edit_storage, reset_total
 
 
 urlpatterns = [
@@ -36,6 +36,7 @@ urlpatterns = [
     path('storage/', storage, name='storage'),
     path('del_storage/<int:p_id>/', del_storage, name='del_storage'),
     path('edit_storage/<int:s_id>', edit_storage, name='edit_storage'),
+    path('reset/', reset_total, name='reset_total'),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

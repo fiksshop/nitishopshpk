@@ -135,12 +135,12 @@ background: linear-gradient(87deg, rgba(43,255,185,1) 0%, rgba(40,204,230,1) 50%
     <title>Niti SHOP</title>
 </head>
 <body>
-<a href="{% url 'index' %}"><img src="{{ MEDIA_URL }}logo.png" class="mx-auto img-fluid d-block mt-4" width="460" alt="nitishop-logo"></a>
+<a href="{% url 'index' %}"><img src="{{ MEDIA_URL }}logo.png" class="mb-5 mx-auto img-responsive d-block mt-4" width="135" alt="nitishop-logo"></a>
 <div style="position: absolute; top: 7px; right: 5px">
     <a href="{% url 'suppliers' %}"><button class="btn btn-warning btn-md"><i class="fas fa-address-book"></i></button></a>
     <a href="{% url 'storage' %}"><button class="btn btn-info btn-md ml-1" style="background-color: #9d6b49; border-color: #7b5439"><i class="fas fa-boxes"></i></button></a>
     </div>
-<div class="container" style="margin-top: -35px">
+<div class="container">
 <div class="justify-content-center mx-auto text-center">
     <div class="text-center row mx-0 justify-content-center">
     {% if request.session.fail %}

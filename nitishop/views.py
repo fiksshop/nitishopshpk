@@ -59,6 +59,11 @@ def add_data(request):
                 t = Results.objects.filter(date__lte=cleanse['date']).order_by('-date')
                 r = Results.objects.get(date=cleanse['date'])
                 tot = Total.objects.latest('id')
+                tot.budget -= r.sale
+                tot.total_sale -= r.sale
+                tot.total_profit -= r.profit
+                tot.total_neto -= r.neto
+
                 r.cashbox += ro(cleanse['cashbox'])
                 r.withdraw += ro(cleanse['withdraw'])
                 r.remain = ro(r.cashbox - r.withdraw)
@@ -67,10 +72,10 @@ def add_data(request):
                 r.neto = ro(r.profit - dflt.day_expense)
                 r.expense += ro(0.0)
                 r.save()
-                tot.total_sale += ro(r.sale)
-                tot.budget += ro(r.sale)
-                tot.total_profit += ro(r.profit)
-                tot.total_neto += ro(r.neto)
+                tot.total_sale += r.sale
+                tot.budget += r.sale
+                tot.total_profit += r.profit
+                tot.total_neto += r.neto
                 tot.save()
                 request.session['success'] = 'Te dhenat u futen me sukses'
                 request.session.set_expiry(1)
@@ -110,6 +115,13 @@ def add_data(request):
                     r.neto = ro(r.profit - dflt.day_expense)
                     r.expense = ro(0.0)
                     r.save()
+                    u = Total.objects.get(id=1)
+                    u.total_sale += ro(r.sale)
+                    u.total_expense += ro(r.expense)
+                    u.total_profit += ro(r.profit)
+                    u.total_neto += ro(r.neto)
+                    u.budget = ro(u.total_sale - u.total_expense)
+                    u.save()
                     request.session['success'] = 'Te dhenat u futen me sukses'
                     request.session.set_expiry(1)
                     return redirect('add_data')
@@ -368,3 +380,14 @@ def edit_storage(request, s_id):
         request.session['success'] = 'Te dhenat u ruajten'
         request.session.set_expiry(1)
         return redirect('storage')
+
+
+def reset_total(request):
+    t = Total.objects.get(id=1)
+    t.budget = 0
+    t.total_sale = 0
+    t.total_profit = 0
+    t.total_neto = 0
+    t.total_expense = 0
+    t.save()
+    return redirect('index')
